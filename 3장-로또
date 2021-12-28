@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h> 
+
+
+int main(int argc, char *argv[]) 
+{
+	int i,j;
+	int lotto[6];
+	srand(time(NULL));
+	for(i=0;i<6;i++)
+	{
+		lotto[i]=rand()%45+1;
+		for(j=0;j<i;j++)
+		{
+			if(lotto[i]==lotto[j])
+			{
+				i--;	
+				break;
+			
+			}
+		}
+	}
+	for(i=0;i<6;i++)
+	{
+		printf("%d ",lotto[i]);
+	}printf("\n");
+
+
+	return 0;
+}
