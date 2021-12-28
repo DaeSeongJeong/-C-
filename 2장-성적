@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h> 
+
+
+int main(int argc, char *argv[]) 
+{
+	int s,top=0;
+	int kor[100],eng[100],mat[100],tot[100];
+	float avg[100];	
+	srand(time(NULL));
+	for(s=0;s<100;s++)
+	{
+		kor[s]=rand()%101;
+		eng[s]=rand()%101;
+		mat[s]=rand()%101;
+	}
+	for(s=0;s<100;s++)
+	{
+		tot[s]=kor[s]+eng[s]+mat[s];
+		avg[s]=tot[s]/3.0;
+	}
+		for(s=0;s<100;s++)
+	{
+		if(tot[top]<tot[s])
+		{
+			top=s;
+		}
+	}
+	for(s=0;s<100;s++)
+	{
+		printf("학번 국어 영어 수학 총점 평균\n");
+		printf(" %d   %d   %d   %d   %d   %f\n",s,kor[s],eng[s],mat[s],tot[s],avg[s]);
+	}printf("가장 우수한 학생은:%d 번 입니다.",top);
+	return 0;
+}
