@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void calculator(int a,int b)
+{
+	int add,min,mul;
+	float div;
+	printf("두가지의 수를 입력 하시오:");
+	  scanf("%d %d",&a,&b);
+  	  add=a+b;
+	  min=a-b;
+	  mul=a*b;
+	  div=a/b;
+	  printf("%d + %d = %d\n",a,b,add);
+	  printf("%d - %d = %d\n",a,b,min);
+	  printf("%d * %d = %d\n",a,b,mul);
+	  printf("%d / %d = %f\n",a,b,div);	
+}
+
+int main(int argc, char *argv[]) 
+{
+ 	int a,b;
+	calculator(a,b);
+	return 0;
+}
