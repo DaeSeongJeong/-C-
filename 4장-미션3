@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+void happy(int lotto[6])
+{
+	int i,j;
+	srand(time(NULL));
+	for(i=0;i<6;i++)
+	{
+		lotto[i]=rand()%45+1;
+		for(j=0;j<i;j++)
+		{
+			if(lotto[i]==lotto[j])
+			{
+				i--;	
+				break;	
+			}
+		}
+	}
+}
+void show(int lotto[6])
+{
+	int i;
+for(i=0;i<6;i++)
+	{
+		printf("%d ",lotto[i]);
+	}printf("\n");
+	
+}
+
+int main(int argc, char *argv[]) 
+{
+	int i;
+	int lotto[6];
+	happy(lotto);
+	show(lotto);
+
+
+	return 0;
+}
