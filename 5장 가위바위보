@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define end -1
+#define GA 0
+#define BA 1
+#define BO 2
+#define You_Win 0
+#define You_Lose 1
+int play()
+{
+	return rand()%3;
+}
+int start()
+{
+	int me;
+	printf("가위(0),바위(1),보(2),종료(-1)");
+	scanf("%d",&me);
+	return me;
+}
+int winner(int com,int me)
+{
+	if(GA==me&&BO==com)
+	{
+		return You_Win;
+	}
+ 	if(BO==me&&BA==com)
+	{
+		return You_Win;
+	}
+	if(BA==me&&GA==com)
+	{
+		return You_Win;
+	}
+	return You_Lose;
+}
+void rate(int total,float win)
+{
+	float rating;
+	rating=win/total;
+	printf("나의 승률:%f",rating);
+}
+int main(int argc, char *argv[]) 
+{
+	int total=0,win=0,com,me,result;
+	srand(time(NULL));
+	float rating;
+		while(1)
+		{
+			com=play();
+			me=start();
+			if(end==me)
+		{
+			break;
+		}
+			total++;
+			result=winner(com,me);
+			if(You_Win==result)
+			{
+				win++;
+				printf("내가 이김! 컴퓨터:%d 나:%d \n",com,me);
+			}
+			else
+			{
+				printf("너 졌어! 컴퓨터:%d 나:%d \n",com,me);
+			}
+		}
+		rate(total,win);
+	return 0;
+}
