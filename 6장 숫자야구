@@ -8,7 +8,7 @@ void start()
 int find(int com[3],int index)
 {
 	int result=0,i;
-	for(i=0;i<3;i++)
+	for(i=0;i<index;i++)
 	{
 		if(com[i]==com[index])
 		{
@@ -38,7 +38,7 @@ void play(int me[3])
 		scanf("%d",&me[i]);
 	}
 }
-void check(int com[3],int me[3],int strike, int ball)
+void check(int com[3],int me[3],int *strike, int *ball)
 {
 	int i,j,ts=0,tb=0;
 	for(i=0;i<3;i++)
@@ -59,13 +59,13 @@ void check(int com[3],int me[3],int strike, int ball)
 			}
 		}
 	}
-	strike=ts;
-	ball=tb;
+	*strike=ts;
+	*ball=tb;
 }
 int next()
 {
 	int go,result=0;
-	printf("-1을 입력하시면  게임이끝납니다");
+	printf("-1을 입력하시면  게임이끝납니다\n");
 	scanf("%d",&go);
 	if(-1==go) 
 	{
@@ -79,7 +79,7 @@ int main()
 	start();
 	while(1)
 	{
-		prinf("A");
+		
 		computer(com);
 		for(i=0;i<10;i++)
 		{
@@ -87,7 +87,7 @@ int main()
 			ball=0;
 			
 			play(me);
-			check(com,me,strike,ball);
+			check(com,me,&strike,&ball);
 			if(3==strike)
 			{
 				break;
