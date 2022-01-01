@@ -73,19 +73,26 @@ int next()
 	}
 	return result;
 }
+void rate(int total,float win)
+{
+	float rating;
+	rating=win/total;
+	printf("나의 승률:%f\n",rating);
+}
 int main()
 {
-	int com[3],me[3],i,strike,ball;
+	int com[3],me[3],i,strike,ball,total=0,win=0;
+	float rating;
 	start();
 	while(1)
 	{
 		
 		computer(com);
+		total++;
 		for(i=0;i<10;i++)
 		{
 			strike=0;
 			ball=0;
-			
 			play(me);
 			check(com,me,&strike,&ball);
 			if(3==strike)
@@ -94,12 +101,14 @@ int main()
 			}
 			else
 			{
+				win++;
 				printf("Strike:%d  Ball:%d \n",strike,ball);
 			}
 		}
 		if(3==strike)
 		{
 			printf("3 Strike !! 너가 이겼어!!\n");
+			rate(total,win);
 		}
 		else
 		{
